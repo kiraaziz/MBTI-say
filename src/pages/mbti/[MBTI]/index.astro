@@ -1,0 +1,71 @@
+---
+import Layout from "../../../components/Layout.astro"
+
+export const getStaticPaths =async()=>{
+
+    let pages = {INFJ: {context : []},ENTP: {context : []},INTP: {context : []},INTJ: {context : []},ENTJ: {context : []},ENFJ: {context : []},INFP: {context : []},ENFP: {context : []},ISFP: {context : []},ISTP: {context : []},ISFJ: {context : []},ISTJ: {context : []},ESTP: {context : []},ESFP: {context : []},ESTJ: {context : []},ESFJ: {context : []}}
+
+
+    const reqData = await fetch(import.meta.env.FETCH_DATA)
+    const data = await reqData.json()
+    const reqShow = await fetch(import.meta.env.FETCH_TYPE)
+    const show = await reqShow.json()
+    
+    data.map((idea) => {
+        pages[idea.type].context =[...pages[idea.type].context, idea.postes]
+
+        show.map((val) => {
+            val.groups.map((finalVal) => {
+                if(finalVal.type === idea.type){
+                    pages[idea.type] = {
+                        context : pages[idea.type].context,
+                        group: val.title,
+                        params: idea.type, 
+                        show : finalVal
+                    }
+                }
+            })
+        })
+
+    })
+
+    return Object.keys(pages).map((val) => {
+
+        return {
+            params: {MBTI: val},
+            props: {data: pages[val]}
+        }
+    })
+
+}
+
+let {group, context, params, show} = Astro.props.data
+
+---
+
+<Layout title={`MBIT say : ${params}`} icon={params.toLowerCase()}>
+    <div class="w-full h-max grid lg:grid-cols-2 grid-cols-1 my-10">
+        <div class="h-60 col-span-1 flex items-center justify-center" >
+            <img  src={`/types/${params.toLowerCase()}.svg`} class="h-full w-auto"/>
+        </div>
+        <div class="col-span-1 h-full">
+            <h1 class="text-3xl font-semibold border-l-4 border-red-600 pl-2 text-red-600">{show.name}</h1>
+            <p class="my-2 text-xl space-x-2 mb-7">{group}
+                <span class="text-red-600 font-semibold">{params}</span>
+            </p>
+            <p class="text-lg font-light">{show.description}</p>
+        </div>
+    </div>
+    <div class="h-max w-full  gap-2 grid xl:grid-cols-4 lg:grid-cols-2 grid-cols-1">
+        {
+            context.map((val, index) => {
+                return(
+                    <div class="p-3 col-span-1 flex-col border-4 rounded-xl border-red-600 bg-gray-900 h-60 flex justify-between items-center">
+                        <p style="overflow-wrap: anywhere;" class="text-lg font-light w-full">{val.substr(0, 120)}{val.length > 150 && "..."}</p>
+                        <a href={`/mbti/${params}/${index}`} class="btn bg-red-600 w-full text-white font-semibold">Read More</a>    
+                    </div>
+                )
+            })
+        }
+    </div>
+</Layout>

@@ -1,0 +1,36 @@
+---
+import "./global.css"
+
+let { title = "MBTI", icon = "intj" } = Astro.props
+---
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{title}</title>
+        <link rel="icon" href={`/types/${icon}.svg`} />
+        <link rel="sitemap" href="/sitemap-index.xml" />
+    </head>
+    <body class="h-screen w-screen overflow-hidden bg-gray-800 flex flex-col items-center justify-center pt-5 px-5">
+        <div class="h-[12vh] w-full rounded-xl bg-gray-900 flex flex-row items-center justify-between px-10">
+            <a href="/" class="font-bold text-red-600 text-center  border-l-4 border-red-600 pl-2  text-xl">MBTI</a>
+            <div class="h-full w-max space-x-5 flex flex-row items-center justify-around">
+                <a href={import.meta.env.FACEBOOK} class="w-max h-max link-hover">
+                    <img src="/icons/facebook.svg" class="h-9 w-9" />
+                </a>
+                <a href={import.meta.env.INSTAGRAM} class="w-max h-max link-hover">
+                    <img src="/icons/instagram.svg" class="h-11 w-11" />
+                </a>
+                <a href={import.meta.env.GITHUB} class="w-max h-max link-hover">
+                    <img src="/icons/github.svg" class="h-11 w-11" />
+                </a>
+            </div>
+        </div>
+        <div class="w-full h-[88vh]">
+            <div class="h-full w-full pt-2 overflow-y-auto overflow-x-hidden">
+                <slot/>
+                <div class="mt-3">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

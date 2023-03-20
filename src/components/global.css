@@ -1,0 +1,23 @@
+@font-face {
+    font-family: f1;
+    src: url(/fonts/Montserrat.ttf);
+}
+
+body {
+    font-family: f1;
+    padding: 0%;
+    margin: 0%
+}
+
+::-webkit-scrollbar{
+    background-color: #11182700;
+    width: 7px;
+    height: 3px;
+
+}
+
+
+::-webkit-scrollbar-thumb{
+    background-color: rgb(220, 38, 38);
+    border-radius: 100px;
+}

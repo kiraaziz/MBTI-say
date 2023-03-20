@@ -1,0 +1,19 @@
+---
+let {mbtiType, title} = Astro.props
+---
+
+<div class="h-max w-full space-y-5">
+    <h1 class="text-4xl font-bold text-red-600">{title}</h1>  
+    <div class="h-max w-full  gap-2 grid xl:grid-cols-4 lg:grid-cols-2 grid-cols-1">
+        {mbtiType.map ((val) => {
+            return(
+                <div class="col-1 pt-10 bg-gray-900 rounded-2xl space-y-3 border-4 flex items-center justify-between flex-col border-red-600 p-3">
+                    <img src={`/types/${val.type.toLowerCase()}.svg`} class="h-48 w-48" />   
+                    <h1 class="font-bold text-white text-xl mt-2 w-full">{val.name}</h1>
+                    <p class="w-full font-light text-white/80">{val.description}</p> 
+                    <a href={`/mbti/${val.type}`} class="btn w-full bg-red-600 text-white mt-2" >{val.type}</a>
+                </div>
+            )
+        })}    
+    </div> 
+</div>

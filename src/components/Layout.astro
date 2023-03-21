@@ -14,9 +14,9 @@ let { title = "MBTI", icon = "intj" } = Astro.props
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body class="h-screen w-screen overflow-hidden bg-gray-800 flex flex-col items-center justify-center pt-5 px-5">
-        <div class="h-[12vh] w-full rounded-xl bg-gray-900 flex flex-row items-center justify-between px-10">
+        <div class="h-[12vh] w-full rounded-xl bg-gray-900 flex flex-row items-center justify-between px-5 lg:px-10">
             <a href="/" class="font-bold text-red-600 text-center  border-l-4 border-red-600 pl-2  text-xl">MBTI</a>
-            <div class="h-full w-max space-x-5 flex flex-row items-center justify-around">
+            <div class="h-full w-max space-x-2 flex flex-row items-center justify-around">
                 <a href={import.meta.env.FACEBOOK} class="w-max h-max link-hover">
                     <img src="/icons/facebook.svg" class="h-9 w-9" />
                 </a>

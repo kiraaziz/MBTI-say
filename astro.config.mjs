@@ -5,6 +5,6 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://mbtisay.netlify.app",
+  site: "https://mbtisay.vercel.app",
   integrations: [tailwind(), react(), sitemap()]
 });

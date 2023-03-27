@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mbtisay.netlify.app/sitemap-index.xml
+Sitemap: https://mbtisay.vercel.app/sitemap-index.xml

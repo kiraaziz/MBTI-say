@@ -6,7 +6,5 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: "https://mbtisay.vercel.app",
-  integrations: [tailwind(), react(), sitemap({
-      entryLimit: 20,
-    })]
+  integrations: [tailwind(), react(), sitemap()]
 });
